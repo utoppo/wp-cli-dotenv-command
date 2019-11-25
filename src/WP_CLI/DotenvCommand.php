@@ -36,6 +36,8 @@ class DotenvCommand extends Command
      */
     public function init($_, $assoc_args)
     {
+        WP_CLI::line();
+        WP_CLI::line('==== INIT');
         $this->init_args(func_get_args());
         $path = $this->resolve_file_path();
 
@@ -129,6 +131,8 @@ class DotenvCommand extends Command
      */
     public function set($_, $assoc_args)
     {
+        WP_CLI::line();
+        WP_CLI::line('==== set');
         $this->init_args(func_get_args());
         list($key, $value) = $_;
 
@@ -146,6 +150,8 @@ class DotenvCommand extends Command
      */
     protected function quote()
     {
+        WP_CLI::line();
+        WP_CLI::line('==== quote');
         if ($this->get_flag('quote-single')) {
             return "'";
         }
@@ -173,6 +179,8 @@ class DotenvCommand extends Command
      */
     public function get($_, $assoc_args)
     {
+        WP_CLI::line();
+        WP_CLI::line('==== get');
         $this->init_args(func_get_args());
         list($key) = $_;
 
@@ -201,6 +209,8 @@ class DotenvCommand extends Command
      */
     public function delete($_, $assoc_args)
     {
+        WP_CLI::line();
+        WP_CLI::line('==== delete');
         $this->init_args(func_get_args());
         $env = $this->get_env_for_write_or_fail();
 
@@ -236,6 +246,8 @@ class DotenvCommand extends Command
      */
     public function _list($patterns, $assoc_args)
     {
+        WP_CLI::line();
+        WP_CLI::line('==== _list');
         $this->init_args(func_get_args());
         $env   = $this->get_env_for_read_or_fail();
 
@@ -259,6 +271,8 @@ class DotenvCommand extends Command
      */
     protected function fields()
     {
+        WP_CLI::line();
+        WP_CLI::line('==== fields');
         return is_string($this->args->fields)
             ? explode(',', $this->args->fields)
             : $this->args->fields;

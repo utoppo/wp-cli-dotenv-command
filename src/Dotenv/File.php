@@ -4,6 +4,7 @@ namespace WP_CLI_Dotenv\Dotenv;
 
 use WP_CLI_Dotenv\Dotenv\Exception\FilePermissionsException;
 use WP_CLI_Dotenv\Dotenv\Exception\NonExistentFileException;
+use WP_CLI;
 
 /**
  * Class File
@@ -45,6 +46,8 @@ class File
      */
     public static function at($path)
     {
+        WP_CLI::line();
+        WP_CLI::line('==== at');
         $file = new static($path);
 
         if (! $file->exists()) {
@@ -69,6 +72,8 @@ class File
      */
     public static function writable($path)
     {
+        WP_CLI::line();
+        WP_CLI::line('==== writable');
         $file = static::at($path);
 
         if (! is_writable($path)) {
